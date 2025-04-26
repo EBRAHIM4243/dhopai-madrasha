@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap" rel="stylesheet">
+  
+  <style>
+    /* === Base Styles === */
+    body {
+      margin: 0;
+      font-family: 'Bornomala', cursive;
+      background: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    /* === Header === */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      background-color: #004d33;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    /* === Header Content === */
+    .header-content {
+      margin-top: 20px;
+    }
+
+    .title {
+      font-size: 45px;
+      margin: 0;
+      color: #007f39;
+    }
+
+    .address {
+      margin-top: 5px;
+      font-size: 24px;
+      color: #444;
+    }
+
+    /* === Gallery === */
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px 0;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    .image-box {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* হালকা সেডো */
+      transform: scale(0.8);
+      opacity: 0;
+      animation: fadeInScale 1s ease forwards;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes fadeInScale {
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* === Main Button === */
+    .main-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: #006f1e;
+      color: white;
+      font-size: 22px;
+      border-radius: 16px; /* স্কয়ার-টাইপ গোলাকৃতি */
+      text-decoration: none;
+      cursor: pointer;
+      margin: 20px 0 40px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: buttonFadeIn 2s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    .main-button:hover {
+      background-color: #005418;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    @keyframes buttonFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === Intro Overlay === */
+    .intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: radial-gradient(#004d33, #002610);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .intro-overlay.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .intro-inner {
+      text-align: center;
+    }
+
+    .intro-text {
+      font-size: 50px;
+      font-weight: bold;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(0);
+      animation: moveUp 2s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes moveUp {
+      to {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+    }
+
+    /* === Intro Menu Grid === */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeInMenu 2s ease forwards;
+      animation-delay: 2.5s;
+    }
+
+    .menu-item {
+      background: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      font-size: 20px;
+      color: #004d33;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
+
+    @keyframes fadeInMenu {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* === Intro Content Section === */
+    #introContent {
+      display: none;
+      background: #ffffff;
+      padding: 30px;
+      margin: 30px auto;
+      border-radius: 10px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      max-width: 800px;
+      text-align: left;
+    }
+
+    #introContent h2 {
+      text-align: center;
+      color: #004d33;
+      margin-bottom: 20px;
+    }
+
+    /* === Footer === */
+    .footer-bar {
+      background-color: #000;
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      padding: 6px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    /* === Responsive Design === */
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, auto);
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 40px;
+        background-color: #004d33;
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 1;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="images/logo.png" alt="লোগো" class="logo">
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="menu">
+      <a onclick="goHome()">হোম</a>
+      <a onclick="showIntroSection()">পরিচিতি</a>
+      <a href="#">বিভাগ সমূহ</a>
+      <a href="#">ভর্তি</a>
+      <a href="#">আবাসন</a>
+      <a href="#">লাইব্রেরী</a>
+      <a href="#">ফলাফল</a>
+      <a href="#">নোটিশ</a>
+      <a href="#">যোগাযোগ</a>
+    </nav>
+  </header>
+
+  <!-- Madrasa Name -->
+  <div class="header-content">
+    <h1 class="title">আল-জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা</h1>
+    <p class="address">ধোপাদী, নওয়াপাড়া, অভয়নগর, যশোর | মোবাইলঃ ০১৯৬৯-৮০২০৯৭</p>
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery" id="gallerySection">
+    <div class="image-box"><img src="images/pic1.jpg" alt="ছবি ১"></div>
+    <div class="image-box"><img src="images/pic2.jpg" alt="ছবি ২"></div>
+    <div class="image-box"><img src="images/pic3.jpg" alt="ছবি ৩"></div>
+    <div class="image-box"><img src="images/pic4.jpg" alt="ছবি ৪"></div>
+  </div>
+
+  <!-- Main Button -->
+  <a class="main-button" onclick="showIntro()">প্রবেশ করুন</a>
+
+  <!-- Intro Overlay -->
+  <div class="intro-overlay" id="intro">
+    <div class="intro-inner">
+      <div class="intro-text">জামিয়ার ওয়েবসাইটে আপনাকে স্বাগতম</div>
+      <div class="menu-grid">
+        <div class="menu-item" onclick="goHome()">হোম</div>
+        <div class="menu-item" onclick="showIntroSection()">পরিচিতি</div>
+        <div class="menu-item">বিভাগ সমূহ</div>
+        <div class="menu-item">ভর্তি</div>
+        <div class="menu-item">আবাসন</div>
+        <div class="menu-item">লাইব্রেরী</div>
+        <div class="menu-item">ফলাফল</div>
+        <div class="menu-item">নোটিশ</div>
+        <div class="menu-item">যোগাযোগ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro Content Section -->
+  <div id="introContent">
+    <h2>আমাদের জামিয়ার পরিচিতি</h2>
+    <p>
+      আল্লাহর অশেষ মেহেরবানিতে ২০০৭ ইং সালে যশোর জেলার অভয়নগর উপজেলাধীন নওয়াপাড়া পৌরসভার ৩নং ওয়ার্ডের অন্তর্গত ধোপাদী গ্রামে প্রতিষ্ঠিত হয় ‘আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা ও এতিমখানা’। প্রতিষ্ঠার শুরু থেকেই এই প্রতিষ্ঠান নারী শিক্ষার প্রসারে গুরুত্বপূর্ণ ভূমিকা পালন করে আসছে।<br><br>
+প্রতিষ্ঠানের পরিচালনায় রয়েছেন সম্মানিত মুহতামিম মুফতী মোঃ দেলোয়ার হোসাইন সাহেব (দা.বা.), যিনি দক্ষতা ও নিষ্ঠার সাথে মাদ্রাসার সার্বিক কার্যক্রম পরিচালনা করে যাচ্ছেন। একটি সুসংগঠিত ও শক্তিশালী কার্যনির্বাহী কমিটির তত্ত্বাবধানে প্রতিষ্ঠানটি পরিচালিত হচ্ছে।<br><br>
+বর্তমানে মাদ্রাসায় ২২ জন অভিজ্ঞ শিক্ষক ও শিক্ষিকা এবং ৫ জন কর্মকর্তা ও কর্মচারী আন্তরিকতার সাথে দায়িত্ব পালন করছেন। এখানে ৪৭৭ জন শিক্ষার্থী অধ্যয়নরত রয়েছে, যার মধ্যে ২১০ জন শিক্ষার্থী লিল্লাহ বোর্ডিং সুবিধার আওতায় রয়েছে।<br><br>
+মাদ্রাসায় নূরানী বিভাগ, আন্তর্জাতিক মানের হিফজুল কুরআন বিভাগ এবং কিতাব বিভাগসহ দাওরায়ে হাদীস (মাস্টার্স সমমান) পর্যন্ত পাঠদান করা হয়। আধুনিক ও মানসম্মত শিক্ষা ব্যবস্থার মাধ্যমে ছাত্রীরা কুরআন-হাদীসের আলোকে নিজেদের জীবন গড়ে তুলছে এবং সমাজের জন্য আলোকবর্তিকা হিসেবে প্রতিষ্ঠিত হচ্ছে।<br><br>
+আল জামিয়াতুল আরাবিয়া ধোপাদী মহিলা মাদ্রাসা — নারীদের দ্বীনি শিক্ষায় আত্মনির্ভরশীল করে গড়ে তুলতে একটি নির্ভরযোগ্য প্রতিষ্ঠান।
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-bar">
+    ওয়েব ডেভেলপার: মুহাঃ ইব্রাহীম খলীল | যোগাযোগ: ০১৩০৫-৩৫৯৬৯১
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+    }
+
+    function showIntro() {
+      document.getElementById('intro').classList.add('active');
+    }
+
+    function hideIntro() {
+      document.getElementById('intro').classList.remove('active');
+    }
+
+    function showIntroSection() {
+      hideIntro();
+      document.getElementById('introContent').style.display = 'block';
+      document.getElementById('gallerySection').style.display = 'none';
+      document.querySelector('.main-button').style.display = 'none';
+    }
+
+    function goHome() {
+      hideIntro();
+      document.getElementById('introContent').style.display = 'none';
+      document.getElementById('gallerySection').style.display = 'flex';
+      document.querySelector('.main-button').style.display = 'inline-block';
+    }
+  </script>
+
+</body>
+</html>
